@@ -80,8 +80,7 @@ int factorial(int n) {
 }
 int factorial_rec(int f, int n) {
 	if (n == 1) return f;
-	f = factorial_rec(f, n) * n;
-	n--;
+	f = factorial_rec(f, n - 1) * n;
 }
 
 void combinations(int n, int m) {
@@ -96,6 +95,7 @@ void main() {
 	//problem 2.3:
 	int n, m;
 	while (1) {
+
 			cin >> n >> m;
 			combinations(n, m);
 		}
