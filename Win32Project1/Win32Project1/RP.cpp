@@ -95,7 +95,6 @@ void main() {
 	//problem 2.3:
 	int n, m;
 	while (1) {
-
 			cin >> n >> m;
 			combinations(n, m);
 		}
@@ -107,7 +106,6 @@ void main() {
 	//	cin >> sum >> x >> y;
 	//	allPairs(sum, x, y);
 	//}
-
 	// problem 10:
 	/*int a = 5, b = 3;
 	cin >> a >> b;

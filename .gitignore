@@ -2,4 +2,6 @@
 *.[oa]
 *~
 *.opendb
-Win32Project1/Win32Project1/Debug/*
+Win32Project1/Win32Project1/Debug/
+Win32Project1/Debug
+*.exe
