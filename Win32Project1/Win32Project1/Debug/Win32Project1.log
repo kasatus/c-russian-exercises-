@@ -1,4 +1,5 @@
 ﻿  RP.cpp
 c:\users\skasatki\documents\visual studio 2015\projects\win32project1\win32project1\rp.cpp(52): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\skasatki\documents\visual studio 2015\projects\win32project1\win32project1\rp.cpp(85): warning C4715: 'factorial_rec': not all control paths return a value
   Win32Project1.vcxproj -> c:\users\skasatki\documents\visual studio 2015\Projects\Win32Project1\Debug\Win32Project1.exe
   Win32Project1.vcxproj -> c:\users\skasatki\documents\visual studio 2015\Projects\Win32Project1\Debug\Win32Project1.pdb (Full PDB)

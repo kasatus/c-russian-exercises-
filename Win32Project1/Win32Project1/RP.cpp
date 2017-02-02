@@ -71,8 +71,34 @@ void allPairs(int sum, int x, int y) {
 	}
 }
 
-void main() {
+int factorial(int n) {
+	int f = 1;
+	for (int i = 2; i <= n; i++) {
+		f = f * i;
+	}
+	return f;
+}
+int factorial_rec(int f, int n) {
+	if (n == 1) return f;
+	f = factorial_rec(f, n) * n;
+	n--;
+}
 
+void combinations(int n, int m) {
+	int c;
+	c = factorial(n) / (factorial(m) * factorial(m - n));
+	printf("combinations = %d\n", c);
+	c = factorial_rec(1, n) / (factorial_rec(1, m) * factorial_rec(1, n - m));
+	printf("combinations fact= %d\n", c);
+}
+
+void main() {
+	//problem 2.3:
+	int n, m;
+	while (1) {
+			cin >> n >> m;
+			combinations(n, m);
+		}
 
 
 	////problem 2.1:
