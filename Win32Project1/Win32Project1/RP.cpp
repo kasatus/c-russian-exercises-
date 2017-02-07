@@ -1,5 +1,8 @@
+#define _CRT_SECURE_NO_DEPRECATE
 #include <iostream>
 #include <cmath>
+#include <stdlib.h>
+#include <stdio.h>
 using namespace std;
 
 void queenHorse(int x1, int y1, int x2, int y2) {
@@ -81,6 +84,7 @@ int factorial(int n) {
 int factorial_rec(int f, int n) {
 	if (n == 1) return f;
 	f = factorial_rec(f, n - 1) * n;
+	return f;
 }
 
 void combinations(int n, int m) {
@@ -91,16 +95,166 @@ void combinations(int n, int m) {
 	printf("combinations fact= %d\n", c);
 }
 
-void main() {
-	//problem 2.3:
-	int n, m;
-	while (1) {
-			cin >> n >> m;
-			combinations(n, m);
+
+int search(char src[], char str[]) {
+	int i, j, firstOcc;
+	i = 0, j = 0;
+
+	while (src[i] != '\0') {
+
+		while (src[i] != str[0] && src[i] != '\0')
+			i++;
+
+		if (src[i] == '\0')
+			return (0);
+
+		firstOcc = i;
+
+		while (src[i] == str[j] && src[i] != '\0' && str[j] != '\0') {
+			i++;
+			j++;
 		}
 
+		if (str[j] == '\0')
+			return (firstOcc);
+		if (src[i] == '\0')
+			return (0);
+
+		i = firstOcc + 1;
+		j = 0;
+	}
+
+}
+
+void main() {
 
 
+	//// parse the file
+	//FILE *file;
+	//int loc;
+
+	//file = fopen("files_to_send/400", "r");
+
+	//if (file == 0)
+	//{
+	//	//fopen returns 0, the NULL pointer, on failure
+	//	perror("Canot open input file\n");
+	//	exit(-1);
+	//}
+
+	//char line[256];
+	//char cpu_usage1[500][4];
+	//int j = 0;
+	//char cpu_usage2[500][4];
+	//char cpu_usage3[500][4];
+	//char cpu_usage4[500][4];
+	//char cpu_usage5[500][4];
+
+
+	//for(int k = 0; k < 7; k++)
+	//fgets(line, sizeof(line), file);
+
+	//int cpu_loc = search(line, "%CPU"); //48
+	//while (fgets(line, sizeof(line), file)) {
+	//	/* note that fgets don't strip the terminating \n, checking its
+	//	presence would allow to handle lines longer that sizeof(line) */
+
+	//	// search through all the processes:
+	//	int k = 0;
+	//	char* first = "10147";
+	//	while (*(line + k) == *(first + k)) k++;
+	//	if (k == 5) {
+	//		//char eba[3] = { *(line + cpu_loc + 1), *(line + cpu_loc + 2), *(line + cpu_loc + 3) };
+	//		////int count = 
+	//		//float ftemp = atof(eba);
+	//		char* asjk = line + cpu_loc;
+	//		cpu_usage1[j][0] = *(line + cpu_loc + 1);
+	//		cpu_usage1[j][1] = *(line + cpu_loc + 2);
+	//		cpu_usage1[j][2] = *(line + cpu_loc + 3);
+	//		cpu_usage1[j][3] = '\0';
+
+	//	}
+
+	//	k = 0;
+	//	char* second = "10148";
+	//	while (*(line + k) == *(second + k)) k++;
+	//	if (k == 5) {
+	//		char eba[3] = { *(line + cpu_loc + 1), *(line + cpu_loc + 2), *(line + cpu_loc + 3) };
+	//		//int count = 
+	//		float ftemp = atof(eba);
+	//		cpu_usage2[j][0] = *(line + cpu_loc + 1);
+	//		cpu_usage2[j][1] = *(line + cpu_loc + 2);
+	//		cpu_usage2[j][2] = *(line + cpu_loc + 3);
+	//		cpu_usage2[j][3] = '\0';
+	//	}
+
+	//	k = 0;
+	//	char* third = "10149";
+	//	while (*(line + k) == *(third + k)) k++;
+	//	if (k == 5) {
+	//		cpu_usage3[j][0] = *(line + cpu_loc + 1);
+	//		cpu_usage3[j][1] = *(line + cpu_loc + 2);
+	//		cpu_usage3[j][2] = *(line + cpu_loc + 3);
+	//		cpu_usage3[j][3] = '\0';
+	//	}
+
+	//	k = 0;
+	//	char* fourth = "10150";
+	//	while (*(line + k) == *(fourth + k)) k++;
+	//	if (k == 5) {
+	//		cpu_usage4[j][0] = *(line + cpu_loc + 1);
+	//		cpu_usage4[j][1] = *(line + cpu_loc + 2);
+	//		cpu_usage4[j][2] = *(line + cpu_loc + 3);
+	//		cpu_usage4[j][3] = '\0';
+	//	}
+
+	//	k = 0;
+	//	char* fifth = "10151";
+	//	while (*(line + k) == *(fifth + k)) k++;
+	//	if (k == 5) {
+	//		char* asjk = line + cpu_loc;
+	//		cpu_usage5[j][0] = *(line + cpu_loc + 1);
+	//		cpu_usage5[j][1] = *(line + cpu_loc + 2);
+	//		cpu_usage5[j][2] = *(line + cpu_loc + 3);
+	//		cpu_usage5[j][3] = '\0';
+	//	}		
+
+	//	if (loc = search(line, "top")) j++;
+	//	printf("%s", line);
+	//}
+	///* may check feof here to make a difference between eof and io failure -- network
+	//timeout for instance */
+	//int yuy = 306;
+	//FILE *f = fopen("400-1.data", "wb");
+	//for (int k = 0; k < yuy; k++)
+	//	fprintf(f, "%s\r\n", &cpu_usage1[k]);
+	//fclose(f);
+	//FILE *f2 = fopen("400-2.data", "wb");
+	//for (int k = 0; k < yuy; k++)
+	//	fprintf(f2, "%s\r\n", &cpu_usage2[k]);
+	//fclose(f2);
+	//FILE *f3 = fopen("400-3.data", "wb");
+	//for (int k = 0; k < yuy; k++)
+	//	fprintf(f3, "%s\r\n", &cpu_usage3[k]);
+	//fclose(f3);
+	//FILE *f4 = fopen("400-4.data", "wb");
+	//for (int k = 0; k < yuy; k++)
+	//	fprintf(f4, "%s\r\n", &cpu_usage4[k]);
+	//fclose(f4);
+	//FILE *f5 = fopen("400-5.data", "wb");
+	//for (int k = 0; k < yuy; k++)
+	//	fprintf(f5, "%s\r\n", &cpu_usage5[k]);
+	//fclose(f5);
+	////fwrite(cpu_usage5, 5, sizeof(cpu_usage5), f);
+	//
+	//fclose(file);
+
+	////problem 2.3:
+	//int n, m;
+	//while (1) {
+	//		cin >> n >> m;
+	//		combinations(n, m);
+	//	}
 	////problem 2.1:
 	//int sum, x, y;
 	//while (1) {
