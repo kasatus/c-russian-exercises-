@@ -3,6 +3,7 @@
 #include <cmath>
 #include <stdlib.h>
 #include <stdio.h>
+#include <ctime> 
 using namespace std;
 
 void queenHorse(int x1, int y1, int x2, int y2) {
@@ -126,8 +127,53 @@ int search(char src[], char str[]) {
 
 }
 
-void main() {
+int checkNegPos(int* A, int size) {
+	int count = 0;
+	int zero = 0;
+	for (int i = 0; i < size; i++) {
+		if (A[i] > 0)
+			count++;
+		else
+			if (A[i] == 0)
+				zero++;
+	}
+	if (count > size - zero)
+		return 1;
+	else
+		return 0;
+}
 
+void snowOrRain(int* temp, int* prec, int& rain, int& snow) {
+	for (int i = 0; i < 10; i++) {
+		if (temp[i] < 0) snow += prec[i];
+		else
+			rain += prec[i];
+	}
+}
+
+void main() {
+	//p2.5
+	int temp[10];
+	int prec[10];
+	srand(time(NULL));
+	for (int i = 0; i < 10; i++) {
+		temp[i] = sin(i) * (rand() % 100);
+		prec[i] = rand() % 50;
+	}
+	int rain = 0, snow = 0;
+	snowOrRain(temp, prec, rain, snow);
+	printf("rain: %d, snow: %d", rain, snow);
+	////p2.4
+	//const int size = 50;
+	//int A[size];
+	//time_t t;
+	///* Intializes random number generator */
+	////srand((unsigned)time(&t));
+	//srand(time(NULL));
+	//for (int i = 0; i < 50; i++) {
+	//	A[i] = sin(i)*50*rand();
+	//}
+	//printf("%d", checkNegPos(A, size));
 
 	//// parse the file
 	//FILE *file;
@@ -322,5 +368,4 @@ void main() {
 
 	getchar();
 	getchar();
-
 }
